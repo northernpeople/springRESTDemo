@@ -16,6 +16,18 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
+
+/*
+ * What is WEB-INF?
+ * 
+ * http://stackoverflow.com/questions/19786142/what-is-web-inf-used-for-in-a-java-ee-web-application
+ * 
+ * 
+ * How to deploy SpringMVC app to tomcat?
+ * 
+ * http://stackoverflow.com/questions/19903637/how-to-deploy-my-spring-mvc-web-application-using-the-build-classes-or-war-file
+ */
+
 @Configuration
 @EnableWebMvc
 @ComponentScan("web") // find and register web components
