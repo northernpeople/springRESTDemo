@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import config.CoreConfiguration;
-import service.ContactService;
+import core.CoreConfiguration;
+import core.model.Contact;
+import core.service.ContactService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=CoreConfiguration.class)

@@ -1,7 +1,8 @@
-package config.web;
+package web;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import config.CoreConfiguration;
+import core.CoreConfiguration;
+import web.WebConfiguration;
 
 
 /*
@@ -13,7 +14,6 @@ public class ServletConfig extends AbstractAnnotationConfigDispatcherServletInit
 	
 	@Override
 	protected String[] getServletMappings() {
-		System.out.println("\n\n>>>>>>servlet config>>>>>\n\n");
 		return new String[] { "/" };
 	}
 

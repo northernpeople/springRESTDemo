@@ -1,4 +1,4 @@
-package config.web;
+package web;
 
 import java.io.IOException;
 

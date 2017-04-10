@@ -1,4 +1,4 @@
-package config;
+package core;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages="model")
-@ComponentScan(basePackages = {"model", "service"})
+@EnableJpaRepositories(basePackages="core.model")
+@ComponentScan(basePackages = {"core.model", "core.service"})
 public class CoreConfiguration {
 	
 	@Bean
@@ -27,7 +27,7 @@ public class CoreConfiguration {
 		LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
 		emfb.setDataSource(dataSource);
 		emfb.setJpaVendorAdapter(jpaVendorAdapter);
-		emfb.setPackagesToScan("model");
+		emfb.setPackagesToScan("core.model");
 		return emfb;	
 	}
 	

@@ -1,4 +1,4 @@
-package model;
+package core.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
