@@ -19,18 +19,16 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 /*
  * What is WEB-INF?
- * 
  * http://stackoverflow.com/questions/19786142/what-is-web-inf-used-for-in-a-java-ee-web-application
  * 
  * 
  * How to deploy SpringMVC app to tomcat?
- * 
  * http://stackoverflow.com/questions/19903637/how-to-deploy-my-spring-mvc-web-application-using-the-build-classes-or-war-file
  */
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("web") // find and register web components
+@ComponentScan("web") // find and register all web components
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Autowired
@@ -57,7 +55,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 		// Template cache is true by default. Set to false if you want
 		// templates to be automatically updated when modified.
-		templateResolver.setCacheable(true);
+		templateResolver.setCacheable(false);
 		return templateResolver;
 	}
 
