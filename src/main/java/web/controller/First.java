@@ -9,13 +9,8 @@ public class First {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String hello(){
+		System.out.println("\n\ncontroller called\n\n");
 		return "hello";
-	}
-	
-	
-	@RequestMapping(value = "/2", method = RequestMethod.GET)
-	public String hello2(){
-		return "templates/hello";
 	}
 
 }

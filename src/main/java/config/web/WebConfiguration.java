@@ -2,8 +2,10 @@ package config.web;
 
 import java.io.IOException;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,9 +31,8 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("web") // find and register all web components
-public class WebConfiguration extends WebMvcConfigurerAdapter {
+public class WebConfiguration extends WebMvcConfigurerAdapter  implements ApplicationContextAware {
 
-	@Autowired
 	private ApplicationContext applicationContext;
 
 	@Bean
@@ -52,9 +53,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 		templateResolver.setApplicationContext(this.applicationContext);
 		templateResolver.setPrefix("/WEB-INF/templates/");
 		templateResolver.setSuffix(".html");
-
-		// Template cache is true by default. Set to false if you want
-		// templates to be automatically updated when modified.
 		templateResolver.setCacheable(false);
 		return templateResolver;
 	}
@@ -71,5 +69,11 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 		viewResolver.setTemplateEngine(templateEngine());
 		return viewResolver;
+	}
+
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		
+		System.out.println("\n\nsetting context\n\n");
+		this.applicationContext = applicationContext;
 	}
 }

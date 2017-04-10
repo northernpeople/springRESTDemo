@@ -10,8 +10,10 @@ import config.CoreConfiguration;
  * using @Configuration classes: web and core.
  */
 public class ServletConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+	
 	@Override
 	protected String[] getServletMappings() {
+		System.out.println("\n\n>>>>>>servlet config>>>>>\n\n");
 		return new String[] { "/" };
 	}
 
