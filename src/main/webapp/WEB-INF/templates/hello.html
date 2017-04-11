@@ -8,8 +8,8 @@
 
 	<h1>All contacts:</h1>
 
-	<div th:each="c : ${contacts}">
-		<h1 th:text="${c.name}">1</h1>
+	<div th:each="c, index : ${contacts}">
+		<h1 th:text="|${index.count}) ${c.name}.|">1</h1>
 
 	</div>
 
