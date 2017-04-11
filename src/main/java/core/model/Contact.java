@@ -63,6 +63,17 @@ public class Contact {
 			return false;
 		return true;
 	}
+
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Contact [id=").append(id).append(", name=").append(name).append("]");
+		return builder.toString();
+	}
+	
+	
 	
 	
 	

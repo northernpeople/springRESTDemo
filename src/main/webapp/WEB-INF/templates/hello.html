@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>First page</title>
-  
-  </head>
-  <body>
-   
- 	<p> hi! </p>
-  </body>
+<head>
+<title>Create contact</title>
+
+</head>
+<body>
+
+	<h1>All contacts:</h1>
+
+	<div th:each="c : ${contacts}">
+		<h1 th:text="${c.name}">1</h1>
+
+	</div>
+
+	<h1>Enter contact details:</h1>
+
+	<form action="#" th:action="@{/save}" th:object="${contact}" method="post">
+		<input type="text" th:field="*{name}" /> <input type="submit" value="Submit" />
+	</form>
+
+	<div th:include="footer">style</div>
+</body>
 </html>
