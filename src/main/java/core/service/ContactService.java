@@ -21,6 +21,10 @@ public class ContactService {
 		return repo.saveAndFlush(c);
 	}
 	
+	public Contact findById(Long id){
+		return repo.findOne(id);
+	}
+	
 	public List<Contact> findAll(){
 		return repo.findAll();
 	}

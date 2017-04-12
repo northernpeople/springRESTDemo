@@ -30,7 +30,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("web") // find and register all web components
+@ComponentScan({"web", "api"}) // find and register all web components
 public class WebConfiguration extends WebMvcConfigurerAdapter  implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;

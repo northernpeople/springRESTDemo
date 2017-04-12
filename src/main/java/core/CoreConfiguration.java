@@ -10,6 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -31,24 +33,31 @@ public class CoreConfiguration {
 		return emfb;	
 	}
 	
-	@Bean 
-	public DataSource dataSource() {  
-		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/practice");
-		ds.setUsername("jpa");
-	    ds.setPassword("jpa");	 
-	    ds.setInitialSize(5);
-	    ds.setMaxActive(10);
-		return ds;
-	}
+	
+	@Bean
+	  public DataSource dataSource() {
+	    return new EmbeddedDatabaseBuilder()
+	            .setType(EmbeddedDatabaseType.H2)
+	            .build();
+	  }
+	
+//	@Bean 
+//	public DataSource dataSource() {  
+//		BasicDataSource ds = new BasicDataSource();
+//		ds.setDriverClassName("com.mysql.jdbc.Driver");
+//		ds.setUrl("jdbc:mysql://localhost:3306/practice");
+//		ds.setUsername("jpa");
+//	    ds.setPassword("jpa");	 
+//	    ds.setInitialSize(5);
+//	    ds.setMaxActive(10);
+//		return ds;
+//	}
 	
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setShowSql(true);
 		adapter.setGenerateDdl(true);
-		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 		return adapter;
 	}
 		
