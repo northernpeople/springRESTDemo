@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +29,7 @@ public class ContactRESTController {
 	    return service.page(page, count);
 	  }
 	  
-	  @RequestMapping(value="contact/{id}", method=RequestMethod.GET, produces="application/json")
+	  @RequestMapping(value="/contact/{id}", method=RequestMethod.GET, produces="application/json")
 	  public Contact spittleById(@PathVariable Long id) {
 	    return service.findById(id);
 	  }
@@ -38,21 +39,18 @@ public class ContactRESTController {
 	    return service.findAll();
 	  }
 	  
-//	  @RequestMapping(method=RequestMethod.POST, consumes="application/json")
-//	  @ResponseStatus(HttpStatus.CREATED)
-//	  public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle, UriComponentsBuilder ucb) {
-//	    Spittle saved = spittleRepository.save(spittle);
-//	    
-//	    HttpHeaders headers = new HttpHeaders();
-//	    URI locationUri = ucb.path("/spittles/")
-//	        .path(String.valueOf(saved.getId()))
-//	        .build()
-//	        .toUri();
-//	    headers.setLocation(locationUri);
-//	    
-//	    ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(saved, headers, HttpStatus.CREATED);
-//	    return responseEntity;
-//	  }
+	  
+	  /*
+	   * In postman create a POST request to http://localhost:8080/SpringRestDemo-0.0.1-SNAPSHOT/contact
+	   * click on 'body', 'raw' and add JSON: {"name" : "anna"}
+	   * in headers add key: Content-Type and value: {"Content-Type":"application/json"}
+	   * click 'send'
+	   */
+	  @RequestMapping(value="/contact",method=RequestMethod.POST, consumes="application/json")
+	  public Contact saveSpittle(@RequestBody Contact contact) {
+	    return service.save(contact);
+
+	  }
 
 
 

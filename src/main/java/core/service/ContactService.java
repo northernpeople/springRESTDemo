@@ -21,7 +21,6 @@ public class ContactService {
 		return repo.findAll(new PageRequest(page, count)).getContent();
 	}
 	
-	
 	public Contact save(Contact c){
 		return repo.saveAndFlush(c);
 	}
