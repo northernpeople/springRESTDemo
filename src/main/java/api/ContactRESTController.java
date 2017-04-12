@@ -13,24 +13,29 @@ import core.model.Contact;
 import core.service.ContactService;
 
 @RestController
-@RequestMapping("/contacts")
 public class ContactRESTController {
 	
 	@Autowired
 	ContactService service;
 	
-	private static final String MAX_LONG_AS_STRING = "9223372036854775807";
 
-//	@RequestMapping(method=RequestMethod.GET, produces="application/json")
-//	  public List<Contact> spittles(
-//	      @RequestParam(value="max", defaultValue=MAX_LONG_AS_STRING) long max,
-//	      @RequestParam(value="count", defaultValue="20") int count) {
-//	    return service.findSpittles(max, count);
-//	  }
+//	example of a call: http://localhost:8080/SpringRestDemo-0.0.1-SNAPSHOT/contacts?page=3&count=2
+	
+	  @RequestMapping(value="/contacts", method=RequestMethod.GET, produces="application/json")
+	  public List<Contact> page(
+	      @RequestParam(value="page", defaultValue=Integer.MAX_VALUE+"") int page,
+	      @RequestParam(value="count", defaultValue="20") int count) {
+	    return service.page(page, count);
+	  }
 	  
-	  @RequestMapping(value="/{id}", method=RequestMethod.GET, produces="application/json")
+	  @RequestMapping(value="contact/{id}", method=RequestMethod.GET, produces="application/json")
 	  public Contact spittleById(@PathVariable Long id) {
 	    return service.findById(id);
+	  }
+	  
+	  @RequestMapping(value="/contacts/all", method=RequestMethod.GET, produces="application/json")
+	  public List<Contact> all() {
+	    return service.findAll();
 	  }
 	  
 //	  @RequestMapping(method=RequestMethod.POST, consumes="application/json")
@@ -48,13 +53,7 @@ public class ContactRESTController {
 //	    ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(saved, headers, HttpStatus.CREATED);
 //	    return responseEntity;
 //	  }
-//	  
-//	  @ExceptionHandler(SpittleNotFoundException.class)
-//	  @ResponseStatus(HttpStatus.NOT_FOUND)
-//	  public @ResponseBody Error spittleNotFound(SpittleNotFoundException e) {
-//	    long spittleId = e.getSpittleId();
-//	    return new Error(4, "Spittle [" + spittleId + "] not found");
-//	  }
+
 
 
 }

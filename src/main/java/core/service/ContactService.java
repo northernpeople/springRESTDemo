@@ -3,6 +3,7 @@ package core.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import core.model.Contact;
@@ -15,6 +16,10 @@ public class ContactService {
 
 	@Autowired
 	public ContactService(ContactRepo repo) { this.repo = repo; }
+	
+	public List<Contact> page(int page, int count){
+		return repo.findAll(new PageRequest(page, count)).getContent();
+	}
 	
 	
 	public Contact save(Contact c){
