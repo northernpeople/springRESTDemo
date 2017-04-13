@@ -1,4 +1,4 @@
-package api;
+package api.producer;
 
 import java.util.List;
 
@@ -44,12 +44,13 @@ public class ContactRESTController {
 	   * In postman create a POST request to http://localhost:8080/SpringRestDemo-0.0.1-SNAPSHOT/contact
 	   * click on 'body', 'raw' and add JSON: {"name" : "anna"}
 	   * in headers add key: Content-Type and value: {"Content-Type":"application/json"}
-	   * click 'send'
+	   * click 'send'.
+	   * 
+	   * Verify that a new entity was created.
 	   */
 	  @RequestMapping(value="/contact",method=RequestMethod.POST, consumes="application/json")
 	  public Contact saveSpittle(@RequestBody Contact contact) {
 	    return service.save(contact);
-
 	  }
 
 

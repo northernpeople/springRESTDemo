@@ -3,12 +3,12 @@ package web;
 import java.io.IOException;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -30,6 +30,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
+@EnableScheduling
 @ComponentScan({"web", "api"}) // find and register all web components
 public class WebConfiguration extends WebMvcConfigurerAdapter  implements ApplicationContextAware {
 
